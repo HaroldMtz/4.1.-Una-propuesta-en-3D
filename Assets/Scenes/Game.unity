@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 39967340}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1178,6 +1178,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120966881}
   m_CullTransparentMesh: 1
+--- !u!1 &1484349190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1484349192}
+  - component: {fileID: 1484349191}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1484349191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484349190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781bdff3c2f22af4291bcd959629b9b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  plataformas:
+  - {fileID: 5508198337537136740, guid: aa8318869a73bca47ba5588678834232, type: 3}
+  - {fileID: 5508198337537136740, guid: 76cda2214a9b27848abd36dbfdf358d0, type: 3}
+  - {fileID: 5508198337537136740, guid: be1d4c1b3a3449a4295d68be2591510b, type: 3}
+  longitudPlataforma: 30
+  tramosIniciales: 5
+  player: {fileID: 39967345}
+  distanciaPorNivel: 100
+  incrementoVelocidad: 0.5
+--- !u!4 &1484349192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484349190}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1582128280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,3 +1696,4 @@ SceneRoots:
   - {fileID: 623115376}
   - {fileID: 1582128283}
   - {fileID: 761473572}
+  - {fileID: 1484349192}

@@ -66,4 +66,20 @@ public class ScoreSystem : MonoBehaviour
     {
         return scoreActual;
     }
+    public void AddPoints(int amount)
+    {
+    scoreActual += amount;
+
+    if (scoreText != null)
+        scoreText.text = $"Score: {scoreActual}";
+
+    // Verificar HighScore
+    if (scoreActual > highScore)
+    {
+        highScore = scoreActual;
+        highScoreText.text = $"HighScore: {highScore}";
+        SaveService.SaveHighScore(highScore);
+    }
+    }
+
 }
