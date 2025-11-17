@@ -8,12 +8,10 @@ public class Coin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Sumar puntos al ScoreSystem
             ScoreSystem score = FindObjectOfType<ScoreSystem>();
             if (score != null)
                 score.AddPoints(valor);
 
-            // Destruir la moneda
             Destroy(gameObject);
         }
     }
