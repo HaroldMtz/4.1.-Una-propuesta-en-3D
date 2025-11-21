@@ -1,70 +1,38 @@
-# 4.4 Iluminación y mejoras visuales 🎮
+4.5 – Interfaz y Navegación del Videojuego 3D
 
-Proyecto de videojuego 3D tipo **Helix Jump / plataforma móvil**, desarrollado en Unity, como parte de la actividad **4.4 Iluminación y mejoras visuales**.
+Este repositorio contiene el desarrollo de la actividad 4.5 Interfaz y Navegación, correspondiente al proyecto de videojuego 3D para Android realizado en Unity.
 
-En esta versión se configuró la iluminación de la escena y un sistema de colores dinámicos para el fondo y el personaje.
+El objetivo de esta actividad fue implementar las interfaces de usuario y la navegación entre escenas, asegurando que el jugador pueda acceder correctamente al menú principal, niveles y pantalla de fin de juego.
 
----
+📌 Características principales del proyecto
+✔ Menú Principal (MainMenu)
 
-## 🎯 Objetivo de la actividad
+Botón Jugar que inicia el juego cargando Level1.
 
-Implementar una gestión básica de iluminación y mejoras visuales que permita:
+Botón Salir con compatibilidad para Android.
 
-- Cambiar el **color de fondo** del juego.
-- Cambiar el **color del personaje**.
-- Ajustar la **iluminación principal** de la escena.
+UI adaptada a pantallas móviles (Canvas con “Scale With Screen Size”).
 
----
+Navegación gestionada con el script UINavigator.cs.
 
-## 🛠️ Implementación
+✔ Nivel 1 (Level1) – Generación infinita
 
-### Script `VisualManager.cs`
+Nivel tipo endless, con plataformas generadas aleatoriamente.
 
-Se creó el script **`VisualManager`** que se encarga de:
+Dificultad progresiva (velocidad aumenta según distancia).
 
-- Elegir un color de fondo desde un arreglo (`Background Colors`).
-- Aplicar un color al material del jugador (`Player Colors`).
-- Ajustar la intensidad y el color de la **Directional Light**.
+El nivel termina y pasa a Level2 cuando el jugador recorre 200 unidades.
 
-El script se agrega a un objeto vacío llamado `VisualManager` y se configuran las referencias desde el Inspector:
+Controlado por el script LevelManager.cs.
 
-- `Main Camera` → cámara principal de la escena.
-- `Main Light` → `Directional Light`.
-- `Player Renderer` → objeto `Player` (Mesh Renderer del personaje).
-- Listas de colores para:
-  - **Background Colors** (fondo).
-  - **Player Colors** (personaje).
-- `Light Intensity` para controlar la intensidad de la luz.
+✔ Nivel 2 (Level2) – Infinity + Objetivo por Score
 
-Además, la cámara está configurada con:
+También es un nivel infinito.
 
-- **Background Type: Solid Color** (URP), para que se vea el color asignado por el script.
+Cuenta puntos según la distancia recorrida usando el script ScoreSystem.cs.
 
----
+El nivel termina cuando el jugador alcanza 50 puntos.
 
-## 🎮 Cómo probar
+Al alcanzar 50 puntos, el juego regresa automáticamente al Menú Principal.
 
-1. Abrir el proyecto en **Unity**.
-2. Cargar la escena principal del juego (por ejemplo: `Game` o `Level1`).
-3. Presionar **Play**:
-   - El **fondo** cambiará de color.
-   - El **personaje** cambiará de color.
-   - La **luz direccional** ajustará su color e intensidad según el tema visual.
-
----
-
-## 🔧 Controles básicos
-
-- Movimiento: joystick virtual en pantalla (Android).
-- Salto: botón de salto en la interfaz.
-
----
-
-## 📁 Repositorio
-
-Este repositorio es público e incluye:
-
-- Escenas del juego.
-- Scripts de movimiento, lógica de niveles y **VisualManager**.
-- Prefabs y elementos necesarios para ejecutar el proyecto en Unity.
-
+Todo gestionado con la actualización final del LevelManager.cs.
