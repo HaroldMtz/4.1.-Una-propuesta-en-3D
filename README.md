@@ -1,38 +1,67 @@
-4.5 – Interfaz y Navegación del Videojuego 3D
+# 🎮 Proyecto 4.1 – Una Propuesta en 3D  
+## Unity – Videojuego tipo HelixJump con mejoras UX
 
-Este repositorio contiene el desarrollo de la actividad 4.5 Interfaz y Navegación, correspondiente al proyecto de videojuego 3D para Android realizado en Unity.
+Este proyecto corresponde a la actividad **4.1 – Una propuesta en 3D**, del curso de Desarrollo de Aplicaciones Interactivas en la UnADM.  
+Se trata de un videojuego 3D inspirado en el estilo HelixJump, mejorado con efectos de experiencia de usuario (UX) como barra de velocidad, partículas, power-ups y variación dinámica de dificultad.
 
-El objetivo de esta actividad fue implementar las interfaces de usuario y la navegación entre escenas, asegurando que el jugador pueda acceder correctamente al menú principal, niveles y pantalla de fin de juego.
+---
 
-📌 Características principales del proyecto
-✔ Menú Principal (MainMenu)
+## 🟣 Objetivo de la Actividad
 
-Botón Jugar que inicia el juego cargando Level1.
+Implementar efectos visuales y de jugabilidad que **enriquezcan la experiencia del usuario** mediante:
 
-Botón Salir con compatibilidad para Android.
+- Cambios temporales de velocidad del personaje
+- Animaciones visuales rápidas (estelas / partículas)
+- Barra de progreso durante el efecto de velocidad
+- Cambio de color y retroalimentación visual
+- Dificultad progresiva a lo largo del nivel
 
-UI adaptada a pantallas móviles (Canvas con “Scale With Screen Size”).
+---
 
-Navegación gestionada con el script UINavigator.cs.
+## 🟩 Características del Videojuego
 
-✔ Nivel 1 (Level1) – Generación infinita
+### ✔ Movimiento 3D fluido con joystick virtual  
+El personaje se controla mediante un joystick para dispositivos móviles, manteniendo una respuesta suave y estable.
 
-Nivel tipo endless, con plataformas generadas aleatoriamente.
+### ✔ Salto con botón (Android Ready)  
+Sistema de salto compatible con Android, utilizando raycast para detectar el suelo.
 
-Dificultad progresiva (velocidad aumenta según distancia).
+### ✔ Sistema de Boost (Super Speed)
+Al obtener un **Power-Up**, el personaje entra en modo de velocidad especial:
 
-El nivel termina y pasa a Level2 cuando el jugador recorre 200 unidades.
+- Aumenta temporalmente su `moveSpeed`
+- Se muestra una **barra de duración**
+- Se activan **partículas SpeedLines**
+- El personaje cambia visualmente de color
+- La velocidad se restaura automáticamente al terminar
 
-Controlado por el script LevelManager.cs.
+### ✔ Sistema de Dificultad Progresiva  
+La velocidad base aumenta sutilmente cada cierto tiempo sin interferir con el boost.
 
-✔ Nivel 2 (Level2) – Infinity + Objetivo por Score
+### ✔ Partículas y efectos visuales  
+- Líneas de velocidad (SpeedLines)
+- Efecto de color en el modelo
+- UI Slider con animación de tiempo
 
-También es un nivel infinito.
+### ✔ Múltiples niveles (Level1 y Level2)
+Ambas escenas cuentan con:
 
-Cuenta puntos según la distancia recorrida usando el script ScoreSystem.cs.
+- Player funcional
+- Power-Up
+- Movimiento + salto
+- Boost
+- Barra de velocidad
+- Dificultad progresiva
 
-El nivel termina cuando el jugador alcanza 50 puntos.
+---
 
-Al alcanzar 50 puntos, el juego regresa automáticamente al Menú Principal.
+## 🟦 Controles del Juego
 
-Todo gestionado con la actualización final del LevelManager.cs.
+### 🕹️ Movimiento  
+- Joystick virtual (Android y PC con mouse arrastrando)
+
+### ⤴️ Salto  
+- Botón “Jump”
+
+### ⚡ Boost  
+- Se activa automáticamente al tocar un **Power-Up**
