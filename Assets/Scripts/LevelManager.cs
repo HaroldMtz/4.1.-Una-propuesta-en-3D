@@ -34,12 +34,6 @@ public class LevelManager : MonoBehaviour
         if (player.position.z - 20f > (zSpawn - tramosIniciales * longitudPlataforma))
             GenerarPlataforma();
 
-        if (player.position.z >= nivelActual * distanciaPorNivel)
-        {
-            motor.moveSpeed += incrementoVelocidad;
-            nivelActual++;
-        }
-
         if (SceneManager.GetActiveScene().name == "Level1")
         {
             if (player.position.z >= 200f)

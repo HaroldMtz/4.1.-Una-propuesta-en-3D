@@ -31,6 +31,8 @@ public class PlayerMotor : MonoBehaviour
     bool hasJumped  = false;
     float lastGroundedTime = -999f;
     float nextJumpAllowedAt = 0f;
+    public bool isBoostActive = false;
+
 
     void Awake()
     {
@@ -71,7 +73,11 @@ public class PlayerMotor : MonoBehaviour
         if (wish.sqrMagnitude > 1f) wish.Normalize();
 
         Vector3 vel = rb.linearVelocity;
-        rb.linearVelocity = new Vector3(wish.x * moveSpeed, vel.y, wish.z * moveSpeed);
+        rb.linearVelocity = Vector3.Lerp(
+            rb.linearVelocity,
+            new Vector3(wish.x * moveSpeed, vel.y, wish.z * moveSpeed),
+            0.25f
+        );
 
         if (wish.sqrMagnitude > 0.01f)
         {
@@ -114,18 +120,21 @@ public class PlayerMotor : MonoBehaviour
         if (isGrounded) lastGroundedTime = Time.time;
     }
 
-    public void JumpNow()
-    {
-        bool canJumpByGround = isGrounded || (Time.time - lastGroundedTime) <= coyoteTime;
-        if (!canJumpByGround) return;
-        if (Time.time < nextJumpAllowedAt || hasJumped) return;
+  public void JumpNow()
+{
+    bool canJump = isGrounded || (Time.time - lastGroundedTime) <= 0.12f;
 
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+    if (!canJump) return;                       
+    if (Time.time < nextJumpAllowedAt) return;  
+    rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-        hasJumped = true;
-        nextJumpAllowedAt = Time.time + jumpCooldown;
-    }
+    rb.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+
+    hasJumped = true;
+    nextJumpAllowedAt = Time.time + jumpCooldown;
+
+    lastGroundedTime = Time.time;
+}
 
     public void SetMove(Vector2 dir) => dpadDir = dir;
     public void StopMove()           => dpadDir = Vector2.zero;
